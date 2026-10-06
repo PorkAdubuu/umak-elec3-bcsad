@@ -14,7 +14,7 @@ How to use this template:
 - GitHub username: PorkAdubuu
 - Section: IV-BCSAD
 - IAM user name that I signed in with: bcsad-g08
-- X: <answer>
+- X: 185
 
 ---
 
@@ -126,8 +126,8 @@ Only resources that are associated with the same security group (sg-0c5b6d4081cf
 
 ### B1. Plan two subnets
 
-- Public subnet CIDR: <answer>
-- Private subnet CIDR: <answer>
+- Public subnet CIDR: 10.185.0.0/24
+- Private subnet CIDR: 10.185.1.0/24
 
 ### B2. Route tables
 
@@ -135,20 +135,20 @@ Route table of the public subnet:
 
 | Destination | Target |
 | --- | --- |
-| <answer> | <answer> |
-| <answer> | <answer> |
+| 10.185.0.0/16 | local |
+| 0.0.0.0/0 | internet gateway |
 
 Route table of the private subnet:
 
 | Destination | Target |
 | --- | --- |
-| <answer> | <answer> |
+| 10.185.0.0/16 | local |
 
 ### B3. My VPC diagram
 
 Tool used (Excalidraw, draw.io, Lucidchart, or paper):
 
-<answer>
+Excalidraw
 
 Save your diagram as `vpc-diagram.png` in your folder. The image line below shows it.
 
@@ -158,20 +158,21 @@ Save your diagram as `vpc-diagram.png` in your folder. The image line below show
 
 Can you still open the web page from your laptop? Why?
 
-<answer>
+No. The instance will no longer have internet access because the 0.0.0.0/0 route to the Internet Gateway was removed.
 
 Can the instance still reach another instance in the VPC? Why?
 
-<answer>
+Yes. Instances can still communicate within the same VPC because the local route 172.31.0.0/16 → local remains.
 
 ### B5. Place a database
 
 Which subnet gets the database? Why?
 
-<answer>
+The database should be placed in the private subnet because it should not be directly accessible from the internet. Only authorized application servers should be able to access it.
 
 ### B6. My question about VPCs
 
 What is your question, and what made you think of it?
 
-<answer>
+Can two different VPCs use the same CIDR range and still communicate with each other?
+What made me think of it: I wondered what would happen if two VPCs used the same private IP address range.
